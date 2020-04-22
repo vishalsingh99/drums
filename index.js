@@ -30,6 +30,7 @@ document.addEventListener("keypress",function(event){
   var keyPressed= (event.key);
   // makeSound(event.key);
   makeSound(keyPressed);
+  buttonAnimation(event.key);
 });
 
 // Button Click  Detecting Button pressed
@@ -41,7 +42,7 @@ for (var i=0;i<button;i++){
      //console.log(this.innerHTML);
     var buttonClicked= this.innerHTML;
     makeSound(buttonClicked);
-
+    buttonAnimation(buttonClicked);
   });
 }
 
@@ -78,4 +79,12 @@ function makeSound(key){
 
     default: console.log(this.innerHTML);
   }
+}
+
+function buttonAnimation(currentKey){
+  var activeButton= document.querySelector("."+currentKey);
+  //this will add CSS to button classList show all the classes attached to that element
+  activeButton.classList.add("pressed");
+  // After few time we need to presses button so looks like button Animation
+  setTimeout(function(){activeButton.classList.remove("pressed");},100);
 }
